@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://5g8v23eo32kw"]
+
+[ext_resource type="Script" path="res://Humans.gd" id="1_n12dc"]
+
+[node name="Scene" type="Node3D"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="UpscreenZone" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="UpscreenZone"]
+
+[node name="Tardis" type="CharacterBody3D" parent="UpscreenZone"]
+
+[node name="TardisSprite3D" type="AnimatedSprite3D" parent="UpscreenZone/Tardis"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpscreenZone/Tardis"]
+
+[node name="Map" type="Node3D" parent="UpscreenZone"]
+
+[node name="MapObjects" type="Node3D" parent="UpscreenZone/Map"]
+
+[node name="MapPicture" type="Node2D" parent="UpscreenZone/Map"]
+
+[node name="LowscreenZone" type="Node3D" parent="."]
+
+[node name="ConsoleBG" type="Node2D" parent="LowscreenZone"]
+
+[node name="ConsoleBGPic" type="AnimatedSprite2D" parent="LowscreenZone/ConsoleBG"]
+
+[node name="ConsolePic" type="AnimatedSprite2D" parent="LowscreenZone/ConsoleBG"]
+
+[node name="Humans" type="Node3D" parent="LowscreenZone"]
+script = ExtResource("1_n12dc")
