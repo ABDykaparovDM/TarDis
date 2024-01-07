@@ -19,7 +19,7 @@ script = ExtResource("1_f43xr")
 mesh = SubResource("CapsuleMesh_ei4cw")
 
 [node name="Root Scene" parent="Mesh" instance=ExtResource("2_nd0qg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_p3mdu")

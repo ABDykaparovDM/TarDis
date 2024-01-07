@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bmm5jcbe75hqb"]
 
-[ext_resource type="Texture2D" uid="uid://ceqcagllxhkxr" path="res://scotyardfull.jpg" id="1_i6m85"]
 [ext_resource type="PackedScene" uid="uid://dno3w14p7nocu" path="res://player.tscn" id="1_n62v0"]
 [ext_resource type="Texture2D" uid="uid://d3ie7uudkknp6" path="res://test.jpg" id="1_s45b7"]
+[ext_resource type="Texture2D" uid="uid://ojtcfhb6ouaw" path="res://2dArt/maplo.png" id="2_myno1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s2emk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,8 +34,8 @@ albedo_texture = ExtResource("1_s45b7")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g0w6q"]
 data = PackedVector3Array(800, 0, 602, -800, 0, 602, 800, 0, -602, -800, 0, 602, -800, 0, -602, 800, 0, -602)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipihr"]
-albedo_texture = ExtResource("1_i6m85")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbhx4"]
+albedo_texture = ExtResource("2_myno1")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5mq2k"]
 size = Vector2(1600, 1204)
@@ -84,7 +84,7 @@ skeleton = NodePath("../MeshInstance3D")
 shape = SubResource("ConcavePolygonShape3D_g0w6q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_ipihr")
+material_override = SubResource("StandardMaterial3D_tbhx4")
 mesh = SubResource("PlaneMesh_5mq2k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
