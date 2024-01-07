@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://bmm5jcbe75hqb"]
+
+[ext_resource type="Texture2D" uid="uid://ceqcagllxhkxr" path="res://scotyardfull.jpg" id="1_i6m85"]
+[ext_resource type="PackedScene" uid="uid://dno3w14p7nocu" path="res://player.tscn" id="1_n62v0"]
+[ext_resource type="Texture2D" uid="uid://d3ie7uudkknp6" path="res://test.jpg" id="1_s45b7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s2emk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_p17f8"]
+sky_material = SubResource("ProceduralSkyMaterial_s2emk")
+
+[sub_resource type="Environment" id="Environment_gmiw4"]
+background_mode = 2
+sky = SubResource("Sky_p17f8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1b6o"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.215686, 0.180392, 0.2, 1)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yi7c6"]
+material = SubResource("StandardMaterial3D_j1b6o")
+size = Vector3(20, 250, 1650)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx5pd"]
+albedo_texture = ExtResource("1_s45b7")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dw17d"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g0w6q"]
+data = PackedVector3Array(800, 0, 602, -800, 0, 602, 800, 0, -602, -800, 0, 602, -800, 0, -602, 800, 0, -602)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipihr"]
+albedo_texture = ExtResource("1_i6m85")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5mq2k"]
+size = Vector2(1600, 1204)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gmiw4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+
+[node name="wall" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0, 1, -810, -75, 0)
+mesh = SubResource("BoxMesh_yi7c6")
+skeleton = NodePath("../..")
+
+[node name="wall2" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, 810, -75, 0)
+mesh = SubResource("BoxMesh_yi7c6")
+skeleton = NodePath("../..")
+
+[node name="wall3" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(-4.35451e-08, 3.8097e-09, 1, 0.0871557, 0.996195, 0, -0.996195, 0.0871557, -4.37114e-08, 0, -75, 612)
+mesh = SubResource("BoxMesh_yi7c6")
+skeleton = NodePath("../..")
+
+[node name="wall4" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(-4.35451e-08, -3.8097e-09, 1, -0.0871557, 0.996195, 0, -0.996195, -0.0871557, -4.37114e-08, 0, -75, -612)
+mesh = SubResource("BoxMesh_yi7c6")
+skeleton = NodePath("../..")
+
+[node name="tardis floor level" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+material_override = SubResource("StandardMaterial3D_yx5pd")
+mesh = SubResource("ArrayMesh_dw17d")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tardis floor level"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tardis floor level/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_g0w6q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ipihr")
+mesh = SubResource("PlaneMesh_5mq2k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_g0w6q")
+
+[node name="Player" parent="." instance=ExtResource("1_n62v0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 201, 0)
+linear_damp = 0.1
+angular_damp = 0.0
