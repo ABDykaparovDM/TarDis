@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmm5jcbe75hqb"]
+[gd_scene load_steps=14 format=3 uid="uid://bmm5jcbe75hqb"]
 
 [ext_resource type="Texture2D" uid="uid://ceqcagllxhkxr" path="res://scotyardfull.jpg" id="1_i6m85"]
 [ext_resource type="PackedScene" uid="uid://dno3w14p7nocu" path="res://player.tscn" id="1_n62v0"]
@@ -17,7 +17,13 @@ sky = SubResource("Sky_p17f8")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1b6o"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.215686, 0.180392, 0.2, 1)
+disable_receive_shadows = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_yi7c6"]
+material = SubResource("StandardMaterial3D_j1b6o")
 size = Vector3(20, 250, 1650)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx5pd"]
@@ -87,6 +93,6 @@ mesh = SubResource("PlaneMesh_5mq2k")
 shape = SubResource("ConcavePolygonShape3D_g0w6q")
 
 [node name="Player" parent="." instance=ExtResource("1_n62v0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -800, 201, 602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 201, 0)
 linear_damp = 0.1
 angular_damp = 0.0
