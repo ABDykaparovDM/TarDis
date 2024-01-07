@@ -8,39 +8,67 @@
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Node2D" type="Node2D" parent="GUI"]
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="GUI/Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="GUI/Control"]
 position = Vector2(960, 715)
 texture = ExtResource("1_ovc2p")
 
-[node name="Map_SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Control"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 701.0
+offset_right = 348.0
+offset_bottom = 737.0
+text = "Внутри ТАРДИС:"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1910.0
+offset_bottom = 1078.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1910, 733)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_i4qog")]
+
+[node name="Map_SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 733.0
 grow_horizontal = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="Map_SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1920, 733)
-render_target_update_mode = 4
-
-[node name="Node3D" parent="Map_SubViewportContainer/SubViewport" instance=ExtResource("1_i4qog")]
-
-[node name="Consoleroom_SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="Consoleroom_SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -370.0
+offset_top = -368.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="Consoleroom_SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Control/Consoleroom_SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1920, 370)
+size = Vector2i(1910, 370)
 render_target_update_mode = 4
 
-[node name="ConsoleRoom" parent="Consoleroom_SubViewportContainer/SubViewport" instance=ExtResource("2_kimdi")]
+[node name="ConsoleRoom" parent="Control/Consoleroom_SubViewportContainer/SubViewport" instance=ExtResource("2_kimdi")]

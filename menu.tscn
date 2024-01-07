@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ht6jebcvmfh"]
+
+[ext_resource type="Script" path="res://MENU.gd" id="1_k4kf6"]
+
+[sub_resource type="Theme" id="Theme_62eql"]
+/colors/1 = Color(0.2, 0.4, 0.6, 1)
+
+[node name="MENU" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 907.0
+offset_top = 521.0
+offset_right = 1171.0
+offset_bottom = 611.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k4kf6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PLAY" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 100
+text = "PLAY"
+
+[node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "QUIT"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.033
+anchor_top = -0.051
+offset_left = -518.928
+offset_top = -441.33
+offset_right = 826.0
+offset_bottom = -226.0
+theme = SubResource("Theme_62eql")
+theme_override_colors/background_color = Color(0.2, 0.4, 0.6, 1)
+theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)
+theme_override_colors/font_selected_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 200
+text = "DOCTOR WHO"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.033
+anchor_top = -0.051
+offset_left = -235.928
+offset_top = -162.33
+offset_right = 572.0
+offset_bottom = -39.0
+theme_override_colors/background_color = Color(0.2, 0.4, 0.6, 1)
+theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)
+theme_override_font_sizes/font_size = 125
+text = "TARDIS PARTY"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
