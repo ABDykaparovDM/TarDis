@@ -1,13 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://b14bga2gnkpp3"]
+[gd_scene load_steps=13 format=3 uid="uid://b14bga2gnkpp3"]
 
-[ext_resource type="Texture2D" uid="uid://blfnhb6hb86c4" path="res://consoleroom_basic.png" id="1_2h31d"]
-[ext_resource type="Texture2D" uid="uid://dsdjvixv5dcc3" path="res://consoleroom_party1.png" id="2_2suls"]
-[ext_resource type="Texture2D" uid="uid://by3vbcgke0mn7" path="res://consoleroom_party2.png" id="3_pj8qu"]
-[ext_resource type="Texture2D" uid="uid://chheoqw4haf38" path="res://consoleroom_party3.png" id="4_mut6v"]
+[ext_resource type="Texture2D" uid="uid://btpwjo57alnbi" path="res://2dArt/consoleroom_basic.png" id="1_2h31d"]
+[ext_resource type="Texture2D" uid="uid://bpormm8f182aw" path="res://2dArt/consoleroom_party1.png" id="2_2suls"]
+[ext_resource type="Texture2D" uid="uid://dnor0tkoptgtk" path="res://2dArt/consoleroom_party2.png" id="3_pj8qu"]
+[ext_resource type="Texture2D" uid="uid://detq02slx3rin" path="res://2dArt/consoleroom_party3.png" id="4_mut6v"]
 [ext_resource type="Texture2D" uid="uid://dngbfuud1fi0q" path="res://2dArt/console.png" id="5_6prvn"]
-[ext_resource type="Texture2D" uid="uid://dmh4t4sx0aqhs" path="res://door1.png" id="6_tbprt"]
-[ext_resource type="Texture2D" uid="uid://db0smuyxdars0" path="res://door2.png" id="7_b2nkj"]
-[ext_resource type="Texture2D" uid="uid://bxhphs2wmtfpb" path="res://door3.png" id="8_lms5v"]
+[ext_resource type="Texture2D" uid="uid://b5pkruw4408d6" path="res://2dArt/door1.png" id="6_tbprt"]
+[ext_resource type="Texture2D" uid="uid://bcxcj0opdnrv7" path="res://2dArt/door2.png" id="7_b2nkj"]
+[ext_resource type="Texture2D" uid="uid://1ya83gfi8r4l" path="res://2dArt/door3.png" id="8_lms5v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxfim"]
+albedo_texture = ExtResource("1_2h31d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4kj0q"]
+material = SubResource("StandardMaterial3D_dxfim")
+size = Vector2(10, 2)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t00m1"]
 animations = [{
@@ -68,6 +75,11 @@ animations = [{
 [node name="ConsoleRoom" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.149035, -0.988832, 0, 0.988832, 0.149035, 0, 0, 0)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_4kj0q")
+
 [node name="ConsoleBGAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 flip_v = true
 sprite_frames = SubResource("SpriteFrames_t00m1")
@@ -82,3 +94,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.396, -0.271, -0.22)
 flip_v = true
 sprite_frames = SubResource("SpriteFrames_s0ep4")
 animation = &"open_close"
+frame_progress = 0.559835
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.989119, 0.147119, 0, -0.147119, -0.989119, 0, 0.694465, -4.6077)
+fov = 66.0205

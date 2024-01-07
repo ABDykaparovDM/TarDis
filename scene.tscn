@@ -1,34 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://5g8v23eo32kw"]
+[gd_scene load_steps=4 format=3 uid="uid://5g8v23eo32kw"]
 
-[ext_resource type="Script" path="res://Humans.gd" id="1_n12dc"]
+[ext_resource type="PackedScene" uid="uid://bmm5jcbe75hqb" path="res://player_controls_test.tscn" id="1_i4qog"]
+[ext_resource type="Texture2D" uid="uid://buj4nevsffvqi" path="res://2dArt/razdelitel.png" id="1_ovc2p"]
+[ext_resource type="PackedScene" uid="uid://b14bga2gnkpp3" path="res://ConsoleRoom.tscn" id="2_kimdi"]
 
-[node name="Scene" type="Node3D"]
+[node name="MainScene" type="Node3D"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="UpscreenZone" type="Node3D" parent="."]
+[node name="Node2D" type="Node2D" parent="GUI"]
 
-[node name="Camera3D" type="Camera3D" parent="UpscreenZone"]
+[node name="Sprite2D" type="Sprite2D" parent="GUI/Node2D"]
+position = Vector2(960, 715)
+texture = ExtResource("1_ovc2p")
 
-[node name="Tardis" type="CharacterBody3D" parent="UpscreenZone"]
+[node name="Map_SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 733.0
+grow_horizontal = 2
+stretch = true
 
-[node name="TardisSprite3D" type="AnimatedSprite3D" parent="UpscreenZone/Tardis"]
+[node name="SubViewport" type="SubViewport" parent="Map_SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 733)
+render_target_update_mode = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UpscreenZone/Tardis"]
+[node name="Node3D" parent="Map_SubViewportContainer/SubViewport" instance=ExtResource("1_i4qog")]
 
-[node name="Map" type="Node3D" parent="UpscreenZone"]
+[node name="Consoleroom_SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -370.0
+grow_horizontal = 2
+grow_vertical = 0
+stretch = true
 
-[node name="MapObjects" type="Node3D" parent="UpscreenZone/Map"]
+[node name="SubViewport" type="SubViewport" parent="Consoleroom_SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 370)
+render_target_update_mode = 4
 
-[node name="MapPicture" type="Node2D" parent="UpscreenZone/Map"]
-
-[node name="LowscreenZone" type="Node3D" parent="."]
-
-[node name="ConsoleBG" type="Node2D" parent="LowscreenZone"]
-
-[node name="ConsoleBGPic" type="AnimatedSprite2D" parent="LowscreenZone/ConsoleBG"]
-
-[node name="ConsolePic" type="AnimatedSprite2D" parent="LowscreenZone/ConsoleBG"]
-
-[node name="Humans" type="Node3D" parent="LowscreenZone"]
-script = ExtResource("1_n12dc")
+[node name="ConsoleRoom" parent="Consoleroom_SubViewportContainer/SubViewport" instance=ExtResource("2_kimdi")]
