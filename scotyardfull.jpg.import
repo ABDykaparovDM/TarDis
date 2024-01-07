@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chheoqw4haf38"
-path.s3tc="res://.godot/imported/consoleroom_party3.png-c6863348b52459e005818e388850bfb9.s3tc.ctex"
+uid="uid://ceqcagllxhkxr"
+path.s3tc="res://.godot/imported/scotyardfull.jpg-795d90654296b1a7ff44007ac87039b7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://consoleroom_party3.png"
-dest_files=["res://.godot/imported/consoleroom_party3.png-c6863348b52459e005818e388850bfb9.s3tc.ctex"]
+source_file="res://scotyardfull.jpg"
+dest_files=["res://.godot/imported/scotyardfull.jpg-795d90654296b1a7ff44007ac87039b7.s3tc.ctex"]
 
 [params]
 
