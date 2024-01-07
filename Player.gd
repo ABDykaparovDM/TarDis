@@ -1,8 +1,10 @@
 extends RigidBody3D
 
-var constant_speed := 6000.0
+var constant_speed := 90000.0
 var _velocity := 0.0
 var vLinear #linear velicoty (Vector3)
+
+var pos := Vector3.ZERO
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,9 +30,18 @@ func _process(delta: float) -> void:
 			pow(vLinear.x, 2) +
 			pow(vLinear.y, 2) + 
 			pow(vLinear.z, 2)
-			)
+			) / 10
 		), delta * 36)
 	$Mesh.rotation.x = clamp($Mesh.rotation.x, deg_to_rad(0), deg_to_rad(90))
+	
+	pos = self.global_position
+	
+	if pos.x < -800 || pos.x > 800:
+		self.global_position.x = clamp(self.global_position.x, -800.0, 800.0)
+		self.linear_velocity.x = 0
+	if pos.z < -602 || pos.z > 602:
+		self.global_position.z = clamp(self.global_position.z, -602.0, 602.0)
+		self.linear_velocity.z = 0
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
