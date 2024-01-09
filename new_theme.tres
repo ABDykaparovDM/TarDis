@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c0fxieadsf77m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohsbb"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.4, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cb23"]
+bg_color = Color(1, 0.8, 0.4, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[resource]
+ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/font_sizes/font_size = 25
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ohsbb")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_6cb23")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0.8, 0.8, 0.8, 1)
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/font_sizes/normal_font_size = 35
